@@ -47,7 +47,7 @@ The source code is provided for research purposes only. Any commercial use is pr
 ```
 @article{zhang2021deeptag,
   title={{DeepTag: A General Framework for Fiducial Marker Design and Detection}},
-  author={Zhuming Zhang and Yongtao Hu and Guoxing Yu and Jingwen Dai},
+  author={Zhang, Zhuming and Hu, Yongtao and Yu, Guoxing and Dai, Jingwen},
   year={2021},
   eprint={2105.13731},
   archivePrefix={arXiv},
