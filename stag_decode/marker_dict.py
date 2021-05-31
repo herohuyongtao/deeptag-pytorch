@@ -14,7 +14,7 @@ class MarkerDict:
  
         main_idx = 0
         decimal_id = -1
-        if len(self.codebook) > 0:
+        if len(self.rotation_set)>0 and len(binary_ids) > self.max_idx and len(self.codebook) > 0:
             # hash
             binary_ids_rotated_set = []
             for ii, idx_list in enumerate(self.rotation_set):
@@ -67,9 +67,12 @@ class MarkerDict:
         rotation_set = []
         idx_list_all = list(range(num_keypoints))
 
+        max_idx = 0
         for main_idx in range(num_rotations):
             _, kpt_idx_list_rotated = unit_tag_template.reorder_points_with_main_idx(idx_list_all, main_idx)
+            max_idx = max(max(kpt_idx_list_rotated), max_idx)
             rotation_set.append(kpt_idx_list_rotated)
+        self.max_idx = max_idx
         return rotation_set
 
 def check_hamming_dist_1d(x, y):
