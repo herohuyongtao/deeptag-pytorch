@@ -1,0 +1,8 @@
+*.pyc
+__pycache__
+.idea/
+*.mp4
+backup/
+results/
+old
+
