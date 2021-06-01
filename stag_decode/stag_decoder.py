@@ -43,7 +43,7 @@ class StagDecoder:
             
 
             print('>iter #%d'% iter_i) 
-            crops, H_list, valid_ids = rectify_crops(image, rois_curr, self.roi_in_crop, self.image_rect_size, ids = valid_ids)
+            crops, H_list, valid_ids = rectify_crops(image, rois_curr, self.roi_in_crop, self.image_rect_size)
 
             # # visualize crops
             # for ii, crop in enumerate(crops):
@@ -154,22 +154,21 @@ class StagDecoder:
         return decoded_tag, roi_updated
 
 
-def rectify_crops(image, rois, roi_in_crop, image_rect_size, ids = None):
+def rectify_crops(image, rois, roi_in_crop, image_rect_size):
     
     crops = []
     H_list = []
     valid_ids = []
     th, tw = image_rect_size
+
     for ii, roi in enumerate(rois):
         if roi is not None:
             H, _ = cv2.findHomography(np.float32(roi), np.float32(roi_in_crop))
             image_rect = cv2.warpPerspective(image, H, (tw,th))         
             crops.append(image_rect)   
             H_list.append(H)  
-            if ids is None:
-                valid_ids.append(ii)
-            else:
-                valid_ids.append(ids[ii])
+            valid_ids.append(ii)
+
     return crops, H_list, valid_ids 
 
 

@@ -9,7 +9,7 @@ import os
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='./video_config.json', help='path of configuration file for camera params and marker size')
+    parser.add_argument('--config', type=str, default='./config_video.json', help='path of configuration file for camera params and marker size')
     parser.add_argument('--CPU', action='store_true', help='use CPU only')
     args = parser.parse_args()
 
