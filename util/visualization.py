@@ -163,12 +163,12 @@ def draw_pose(img, rvecs, tvecs, cameraMatrix, distCoeffs, axis_size, is_inverse
     # project 3D points to image plane
     imgpts, jac = cv2.projectPoints(axis, rvecs, tvecs, cameraMatrix, distCoeffs)
     imgpts_corner, jac = cv2.projectPoints(corner, rvecs, tvecs, cameraMatrix, distCoeffs)
-    corner = tuple(imgpts_corner[0].ravel())
+    corner = tuple(imgpts_corner[0].ravel().astype(np.int16).tolist())
     
     
-    img = cv2.line(img, corner, tuple(imgpts[0].ravel()), (0,0,255), 5)
-    img = cv2.line(img, corner, tuple(imgpts[1].ravel()), (0,255,0), 5)
-    img = cv2.line(img, corner, tuple(imgpts[2].ravel()), (255,0,0), 5)
+    img = cv2.line(img, corner, tuple(imgpts[0].ravel().astype(np.int16).tolist()), (0,0,255), 5)
+    img = cv2.line(img, corner, tuple(imgpts[1].ravel().astype(np.int16).tolist()), (0,255,0), 5)
+    img = cv2.line(img, corner, tuple(imgpts[2].ravel().astype(np.int16).tolist()), (255,0,0), 5)
 
 
     return img
@@ -196,8 +196,8 @@ def Draw3DCube(image, rvecs, tvecs, cameraMatrix, distCoeffs, axis_size, cube_co
     # draw lines of different colours
     for i in range(4):
         
-        cv2.line(image, tuple(imagePoints[i].ravel()), tuple(imagePoints[(i + 1) % 4].ravel()), cube_color, line_width)
-        cv2.line(image, tuple(imagePoints[i + 4].ravel()), tuple(imagePoints[4 + (i + 1) % 4].ravel()), cube_color, line_width)
-        cv2.line(image, tuple(imagePoints[i].ravel()), tuple(imagePoints[i + 4].ravel()), cube_color, line_width)
+        cv2.line(image, tuple(imagePoints[i].ravel().astype(np.int16).tolist()), tuple(imagePoints[(i + 1) % 4].ravel().astype(np.int16).tolist()), cube_color, line_width)
+        cv2.line(image, tuple(imagePoints[i + 4].ravel().astype(np.int16).tolist()), tuple(imagePoints[4 + (i + 1) % 4].ravel().astype(np.int16).tolist()), cube_color, line_width)
+        cv2.line(image, tuple(imagePoints[i].ravel().astype(np.int16).tolist()), tuple(imagePoints[i + 4].ravel().astype(np.int16).tolist()), cube_color, line_width)
 
     return image
