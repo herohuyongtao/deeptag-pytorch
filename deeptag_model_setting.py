@@ -75,13 +75,13 @@ def load_deeptag_models(tag_family, device = None):
     
 
     model_detector = detector(num_channels=num_channels, num_masks=num_masks, num_classes = 2, num_classes_keypoints = num_classes_keypoints)
-    state_dict = torch.load(os.path.join(checkpoint_dir, model_filename))
+    state_dict = torch.load(os.path.join(checkpoint_dir, model_filename), map_location=device)
     model_detector.load_state_dict(state_dict)
     model_detector.to(device)
     #print(model_detector)
 
     model_decoder = decoder(num_channels=num_channels_refiner, num_masks=num_masks, num_classes = num_classes)
-    state_dict_2stg = torch.load(os.path.join(checkpoint_dir_2stg, model_filename_2stg))
+    state_dict_2stg = torch.load(os.path.join(checkpoint_dir_2stg, model_filename_2stg), map_location=device)
     model_decoder.load_state_dict(state_dict_2stg)
     model_decoder.to(device)
     #print(model_decoder)  
