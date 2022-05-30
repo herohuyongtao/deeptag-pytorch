@@ -43,15 +43,17 @@ Besides supporting existing markers like *AprilTag, ArUco, ARToolkitPlus, TopoTa
 The source code is provided for research purposes only. Any commercial use is prohibited. When using the code in your research work, please cite the following paper:
 > **"DeepTag: A General Framework for Fiducial Marker Design and Detection."**  
 > Zhuming Zhang, Yongtao Hu, Guoxing Yu, and Jingwen Dai  
-> *[arXiv:2105.13731](http://arxiv.org/abs/2105.13731) (2021)*.
+> *IEEE TPAMI 2022*.
 ```
-@article{zhang2021deeptag,
+@article{zhang2022deeptag,
   title={{DeepTag: A General Framework for Fiducial Marker Design and Detection}},
   author={Zhang, Zhuming and Hu, Yongtao and Yu, Guoxing and Dai, Jingwen},
-  year={2021},
-  eprint={2105.13731},
-  archivePrefix={arXiv},
-  primaryClass={cs.CV}
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  volume={},
+  number={},
+  pages={},
+  year={2022},
+  publisher={IEEE}
 }
 ```
 
